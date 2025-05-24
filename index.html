@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安眠小說家 - 讓故事伴你入眠</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>安眠小說家</h1>
+            <p class="subtitle">讓溫柔的故事伴你進入甜美夢鄉</p>
+            <div class="audio-control">
+                <button id="rainSoundToggle" class="rain-sound-btn">
+                    <span class="icon">☔</span>
+                    <span class="text">雨聲</span>
+                </button>
+                <div class="volume-control">
+                    <label for="rainVolume">音量：</label>
+                    <input type="range" id="rainVolume" min="0" max="100" value="50">
+                </div>
+                <audio id="rainSound" loop preload="auto">
+                    <source src="xm3646.mp3" type="audio/mpeg">
+                    您的瀏覽器不支持音頻播放。
+                </audio>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>生成安眠故事</h2>
+            <div class="input-group">
+                <textarea id="prompt" placeholder="請輸入故事主題或關鍵詞，例如：'一個關於星空的故事'、'森林中的小木屋'、'海邊的日落'..."></textarea>
+                <button onclick="generateNovel()">生成故事</button>
+            </div>
+            <div class="output-container">
+                <div id="output" class="output"></div>
+                <button class="copy-btn" onclick="copyText()">複製故事</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>文字轉語音</h2>
+            <div class="tts-options">
+                <h3>選擇轉換方式</h3>
+                <div class="option-buttons">
+                    <button class="option-btn active" onclick="switchTTS('browser')">瀏覽器語音合成</button>
+                    <button class="option-btn" onclick="switchTTS('ttsmaker')">TTSMaker</button>
+                </div>
+            </div>
+
+            <div id="browser-tts" class="tts-section">
+                <div class="voice-controls">
+                    <div>
+                        <label for="voice">選擇聲音：</label>
+                        <select id="voice"></select>
+                    </div>
+                    <div>
+                        <label for="rate">語速：</label>
+                        <input type="range" id="rate" min="0.5" max="2" step="0.1" value="1">
+                        <span id="rate-value">1.0</span>
+                    </div>
+                    <div>
+                        <label for="volume">音量：</label>
+                        <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+                        <span id="volume-value">1.0</span>
+                    </div>
+                </div>
+                <button onclick="speak()">開始朗讀</button>
+            </div>
+
+            <div id="ttsmaker-tts" class="tts-section" style="display: none;">
+                <div class="tts-info">
+                    <p>使用 TTSMaker 可以獲得更好的語音效果，支持多種語言和聲音。</p>
+                    <button class="convert-btn" onclick="convertToTTSMaker()">轉換到 TTSMaker</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>安眠小貼士</h2>
+            <ul class="tips-list">
+                <li>選擇一個安靜、舒適的環境</li>
+                <li>調整適當的音量和語速</li>
+                <li>可以配合輕音樂或白噪音</li>
+                <li>保持規律的睡眠時間</li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
